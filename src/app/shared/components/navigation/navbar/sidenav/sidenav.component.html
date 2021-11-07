@@ -1,0 +1,27 @@
+<mat-nav-list style="padding: 0px">
+  <mat-toolbar color="primary">
+    <!-- <span>Menu</span> -->
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button (click)="onSidenavClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
+    <mat-icon mat-list-icon>home</mat-icon>
+    <span class="nav-caption">Home</span>
+  </a>
+
+  <a
+    *ngFor="let navLink of navLinks"
+    mat-list-item
+    [routerLink]="navLink.to"
+    (click)="onSidenavClose()"
+  >
+    <mat-icon mat-list-icon>{{ navLink.icon }}</mat-icon>
+    <span>{{ navLink.text }}</span>
+  </a>
+  <mat-divider></mat-divider>
+</mat-nav-list>

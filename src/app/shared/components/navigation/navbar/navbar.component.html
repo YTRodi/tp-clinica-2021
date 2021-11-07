@@ -1,0 +1,17 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav role="navigation">
+    <app-sidenav
+      (sidenavClose)="sidenav.close()"
+      [navLinks]="navLinks"
+    ></app-sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header
+      (sidenavToggle)="sidenav.toggle()"
+      [title]="headerTitle"
+      [navLinks]="navLinks"
+    ></app-header>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
