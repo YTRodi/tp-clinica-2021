@@ -1,1 +1,193 @@
-<p>register works!</p>
+<style>
+  .container {
+    height: 100%;
+  }
+
+  .card-container {
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 0.5rem;
+    /* height: 696px; */
+  }
+
+  .wrapper {
+    width: 450px;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .card-image > :last-child:not(.mat-card-footer),
+  .mat-card-content > :last-child:not(.mat-card-footer) {
+    margin-bottom: -21px;
+  }
+
+  .form-card {
+    /* Remove default box shadow */
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  mat-card-actions {
+    margin: 0;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+</style>
+
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <div class="card-container" fxLayout="row" fxLayoutAlign="center center">
+    <div class="wrapper" fxHide.sm>
+      <mat-card class="card-image">
+        <img
+          mat-card-image
+          src="https://images.pexels.com/photos/3845843/pexels-photo-3845843.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+          alt="Photo of a patient/specialist"
+        />
+      </mat-card>
+    </div>
+
+    <div class="wrapper" fxLayout="column" fxLayoutAlign="center center">
+      <form>
+        <mat-card class="form-card">
+          <mat-card-title>Registro</mat-card-title>
+          <mat-card-subtitle>
+            <mat-button-toggle-group appearance="legacy" style="width: 100%">
+              <mat-button-toggle value="bold" style="width: 100%" checked>
+                Paciente
+              </mat-button-toggle>
+              <mat-button-toggle value="italic" style="width: 100%">
+                Especialista
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </mat-card-subtitle>
+
+          <mat-card-content>
+            <div fxLayout="row" fxLayoutGap="0.5rem" fxLayout.sm="column">
+              <mat-form-field appearance="outline" color="primary">
+                <mat-label>Nombre</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Ingresa tu nombre"
+                  required
+                />
+                <mat-error>Invalid email</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" color="primary">
+                <mat-label>Apellido</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Ingresa tu apellido"
+                  required
+                />
+                <mat-error>Invalid email</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="0.5rem">
+              <mat-form-field appearance="outline" color="primary">
+                <mat-label>Edad</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Ingresa tu edad"
+                  required
+                />
+                <mat-error>Invalid email</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" color="primary">
+                <mat-label>Dni</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Ingresa tu DNI"
+                  required
+                />
+                <mat-error>Invalid email</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="0.5rem">
+              <mat-form-field appearance="outline" color="primary">
+                <mat-label>Obra social</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Ingresa tu obra social"
+                  required
+                />
+                <mat-error>Invalid email</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" color="primary">
+                <mat-label>FOTOS</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  placeholder="Ingresa tu DNI"
+                  required
+                />
+                <mat-error>Invalid email</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="outline" color="primary">
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  type="email"
+                  placeholder="Ingresa tu email"
+                  required
+                />
+                <mat-error>Invalid email</mat-error>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                  placeholder="Ingresa tu contraseña"
+                  required
+                  [autocomplete]="false"
+                />
+                <button
+                  mat-icon-button
+                  matSuffix
+                  type="button"
+                  (click)="hide = !hide"
+                >
+                  <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+                <mat-error *ngIf="hide === false">Invalid email</mat-error>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button
+              class="submit-button"
+              mat-raised-button
+              type="submit"
+              color="accent"
+            >
+              Registrar
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>
