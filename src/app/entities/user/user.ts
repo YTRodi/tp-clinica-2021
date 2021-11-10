@@ -3,7 +3,7 @@ import {
   ICommonEntity,
 } from 'src/app/shared/interfaces/common/common.interface';
 import { BuilderTemplate } from 'src/app/shared/entities/builder/builderTemplate';
-import { IPhoto, Photo } from '../photo/photo';
+import { IPhoto } from '../photo/photo';
 import { Role } from 'src/app/shared/enums/role.enum';
 import { Maybe } from 'src/app/shared/types';
 
