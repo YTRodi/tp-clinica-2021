@@ -4,11 +4,11 @@ import { IRoleValue } from 'src/app/shared/interfaces/common/common.interface';
 import { Role } from 'src/app/shared/enums/role.enum';
 
 @Component({
-  selector: 'app-step-one',
-  templateUrl: './step-one.component.html',
-  styleUrls: ['./step-one.component.css'],
+  selector: 'app-step-one-form',
+  templateUrl: './step-one-form.component.html',
+  styleUrls: ['./step-one-form.component.css'],
 })
-export class StepOneComponent implements OnInit {
+export class StepOneFormComponent implements OnInit {
   @Output() onCompleteStep = new EventEmitter<Role>();
 
   public roles: IRoleValue[];

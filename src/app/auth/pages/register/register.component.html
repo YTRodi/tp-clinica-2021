@@ -12,7 +12,9 @@
   <mat-stepper style="border: 1px solid red" linear>
     <!-- Step 1 -->
     <mat-step label="Tipo de usuario">
-      <app-step-one (onCompleteStep)="onCompleteStepOne($event)"></app-step-one>
+      <app-step-one-form
+        (onCompleteStep)="onCompleteStepOne($event)"
+      ></app-step-one-form>
     </mat-step>
 
     <!-- Step 2 -->
