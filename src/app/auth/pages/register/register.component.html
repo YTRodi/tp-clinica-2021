@@ -1,46 +1,22 @@
-<style>
-  .container {
-    height: 100%;
-  }
-
-  form {
-    margin-top: 1.5rem;
-  }
-
-  mat-form-field {
-    width: 100%;
-  }
-</style>
+<!-- TODO: agregar un shadow al stepper -->
+<!-- TODO: agregar un shadow al stepper -->
+<!-- TODO: agregar un shadow al stepper -->
+<!-- TODO: agregar un shadow al stepper -->
+<!-- TODO: agregar un shadow al stepper -->
 
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
   <div>
     <h1>Registro</h1>
   </div>
 
-  <!-- TODO: agregar un shadow al stepper -->
-  <mat-stepper style="border: 1px solid red">
+  <mat-stepper style="border: 1px solid red" linear>
     <!-- Step 1 -->
     <mat-step label="Tipo de usuario">
-      <form>
-        <mat-form-field appearance="outline">
-          <mat-label>Seleccione el tipo de usuario</mat-label>
-          <mat-select [(ngModel)]="selectedValue" name="food">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-              {{ food.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <div fxLayoutAlign="end center">
-          <button mat-raised-button matStepperNext color="accent">
-            Siguiente
-          </button>
-        </div>
-      </form>
+      <app-step-one (onCompleteStep)="onCompleteStepOne($event)"></app-step-one>
     </mat-step>
 
     <!-- Step 2 -->
-    <mat-step label="Perfil">
+    <mat-step label="Email y contraseña">
       <form>
         <div fxLayout="column" fxLayoutGap="10px">
           <mat-form-field appearance="outline">
@@ -134,14 +110,14 @@
         </div>
 
         <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
-          <mat-form-field appearance="outline">
+          <!-- <mat-form-field appearance="outline">
             <mat-label>Obra social</mat-label>
             <mat-select [(ngModel)]="selectedValue" name="food">
               <mat-option *ngFor="let food of foods" [value]="food.value">
                 {{ food.viewValue }}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
 
           <mat-form-field appearance="outline">
             <mat-label>FOTOS</mat-label>
@@ -165,9 +141,7 @@
     </mat-step>
 
     <!-- Step 4 -->
-    <mat-step label="Perfil completado">
-      <!-- <ng-template matStepLabel>Estado del perfil:</ng-template> -->
-
+    <!-- <mat-step label="Perfil completado">
       <p>¡Tu perfil se ha creado con éxito!</p>
 
       <div fxLayoutAlign="end center">
@@ -175,6 +149,6 @@
           Ir al backoffice
         </button>
       </div>
-    </mat-step>
+    </mat-step> -->
   </mat-stepper>
 </div>

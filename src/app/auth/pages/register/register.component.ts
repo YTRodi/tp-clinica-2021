@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
-interface Car {
-  value: string;
-  viewValue: string;
-}
+import { User } from 'src/app/entities/user/user';
+import { Role } from 'src/app/shared/enums/role.enum';
 
 @Component({
   selector: 'app-register',
@@ -17,23 +9,13 @@ interface Car {
 })
 export class RegisterComponent implements OnInit {
   hide = true;
-
-  selectedValue: string | undefined = undefined;
-  selectedCar: string | undefined = undefined;
-
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
-  ];
-
-  cars: Car[] = [
-    { value: 'volvo', viewValue: 'Volvo' },
-    { value: 'saab', viewValue: 'Saab' },
-    { value: 'mercedes', viewValue: 'Mercedes' },
-  ];
+  public newUser = new User();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onCompleteStepOne(event: Role) {
+    this.newUser.setRole(event);
+  }
 }

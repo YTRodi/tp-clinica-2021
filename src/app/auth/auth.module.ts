@@ -9,14 +9,15 @@ import { MaterialModule } from '../material/material.module';
 
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { StepOneComponent } from './components/forms/register/step-one/step-one.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, StepOneComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
-    // ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     MaterialModule,
   ],

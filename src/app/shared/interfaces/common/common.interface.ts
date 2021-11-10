@@ -1,3 +1,4 @@
+import { Role } from '../../enums/role.enum';
 import { Maybe } from '../../types';
 
 export interface ICommonEntity {
@@ -8,4 +9,9 @@ export interface ICommonEntity {
 
 export interface IIdentity<T> {
   id?: T;
+}
+
+export interface IRoleValue {
+  value: Role;
+  viewValue: string;
 }
