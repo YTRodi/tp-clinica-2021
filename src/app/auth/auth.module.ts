@@ -10,9 +10,10 @@ import { MaterialModule } from '../material/material.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { StepOneFormComponent } from './components/forms/register/step-one-form/step-one-form.component';
+import { StepTwoFormComponent } from './components/forms/register/step-two-form/step-two-form.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, StepOneFormComponent],
+  declarations: [LoginComponent, RegisterComponent, StepOneFormComponent, StepTwoFormComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
