@@ -4,102 +4,36 @@
 <!-- TODO: agregar un shadow al stepper -->
 <!-- TODO: agregar un shadow al stepper -->
 
-<!-- TODO: Agregar el mat-step [stepControl]="firstFormGroup" -->
-
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
   <div>
     <h1>Registro</h1>
   </div>
 
-  <mat-stepper style="border: 1px solid red" linear="false" #stepper>
+  <!-- style="border: 1px solid red; height: 100%; width: 50%" -->
+  <mat-stepper style="border: 1px solid red" linear #stepper>
     <!-- Step 1 -->
-    <mat-step label="Tipo de usuario">
-      <app-step-one-form (onCompleteStep)="onCompleteStepOne($event)">
+    <mat-step label="Tipo de usuario" [stepControl]="stepOneForm">
+      <app-step-one-form
+        [stepForm]="stepOneForm"
+        (onCompleteStep)="onCompleteStepOne($event)"
+      >
       </app-step-one-form>
     </mat-step>
 
     <!-- Step 2 -->
-    <mat-step label="Email y contraseña">
+    <mat-step label="Email y contraseña" [stepControl]="stepTwoForm">
       <app-step-two-form
+        [stepForm]="stepTwoForm"
         (onCompleteStep)="onCompleteStepTwo($event)"
       ></app-step-two-form>
     </mat-step>
 
     <!-- Step 3 -->
-    <mat-step label="Datos personales">
-      <form>
-        <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
-          <mat-form-field appearance="outline">
-            <mat-label>Nombre</mat-label>
-            <input
-              matInput
-              type="text"
-              placeholder="Ingresa tu nombre"
-              required
-            />
-            <mat-error>Invalid email</mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>Apellido</mat-label>
-            <input
-              matInput
-              type="text"
-              placeholder="Ingresa tu apellido"
-              required
-            />
-            <mat-error>Invalid email</mat-error>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
-          <mat-form-field appearance="outline">
-            <mat-label>Edad</mat-label>
-            <input
-              matInput
-              type="text"
-              placeholder="Ingresa tu edad"
-              required
-            />
-            <mat-error>Invalid email</mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>DNI</mat-label>
-            <input matInput type="text" placeholder="Ingresa tu dni" required />
-            <mat-error>Invalid email</mat-error>
-          </mat-form-field>
-        </div>
-
-        <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
-          <!-- <mat-form-field appearance="outline">
-            <mat-label>Obra social</mat-label>
-            <mat-select [(ngModel)]="selectedValue" name="food">
-              <mat-option *ngFor="let food of foods" [value]="food.value">
-                {{ food.viewValue }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field> -->
-
-          <mat-form-field appearance="outline">
-            <mat-label>FOTOS</mat-label>
-            <input
-              matInput
-              type="text"
-              placeholder="Ingresa tu foto"
-              required
-            />
-            <mat-error>Invalid email</mat-error>
-          </mat-form-field>
-        </div>
-
-        <div fxLayoutAlign="end center">
-          <button mat-button matStepperPrevious>Atrás</button>
-          <button mat-raised-button matStepperNext color="accent">
-            Siguiente
-          </button>
-        </div>
-      </form>
+    <mat-step label="Datos personales" [stepControl]="stepThreeForm">
+      <app-step-three-form
+        [stepForm]="stepThreeForm"
+        (onCompleteStep)="onCompleteStepThree($event)"
+      ></app-step-three-form>
     </mat-step>
 
     <!-- Step 4 -->
