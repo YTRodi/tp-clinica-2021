@@ -1,7 +1,7 @@
 <form (ngSubmit)="onSubmit()">
   <mat-form-field appearance="outline">
     <mat-label>Seleccione el tipo de usuario</mat-label>
-    <mat-select [formControl]="selectFormControl" required>
+    <mat-select [formControl]="stepForm" required>
       <mat-option *ngFor="let role of roles" [value]="role.value">
         {{ role.viewValue }}
       </mat-option>
@@ -13,7 +13,7 @@
       mat-raised-button
       matStepperNext
       color="accent"
-      [disabled]="!selectFormControl.valid"
+      [disabled]="!stepForm.valid"
     >
       Siguiente
     </button>
