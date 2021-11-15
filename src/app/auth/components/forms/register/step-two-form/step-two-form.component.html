@@ -1,4 +1,4 @@
-<form [formGroup]="stepTwoForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="stepForm" (ngSubmit)="onSubmit()">
   <div fxLayout="column">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
@@ -38,7 +38,7 @@
       mat-raised-button
       matStepperNext
       color="accent"
-      [disabled]="!stepTwoForm.valid"
+      [disabled]="!stepForm.valid"
     >
       Siguiente
     </button>

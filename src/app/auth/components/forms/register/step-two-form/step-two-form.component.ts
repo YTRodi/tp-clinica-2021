@@ -1,5 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+
+export interface StepTwoParams {
+  email: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-step-two-form',
@@ -8,19 +13,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class StepTwoFormComponent implements OnInit {
   hide = true;
+  @Input() stepForm!: FormGroup;
   @Output() onCompleteStep = new EventEmitter();
-  public stepTwoForm: FormGroup;
 
-  constructor() {
-    this.stepTwoForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required]),
-    });
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 
   onSubmit(): void {
-    return this.onCompleteStep.emit(this.stepTwoForm.value);
+    return this.onCompleteStep.emit(this.stepForm.value);
   }
 }
