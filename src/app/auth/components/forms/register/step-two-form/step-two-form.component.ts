@@ -21,40 +21,53 @@ export interface StepTwoParams {
   specialties?: string;
   photos: string;
 }
+
 @Component({
   selector: 'app-step-two-form',
   templateUrl: './step-two-form.component.html',
   styleUrls: ['./step-two-form.component.css'],
 })
-export class StepTwoFormComponent implements OnInit {
+export class StepTwoFormComponent implements OnInit, OnChanges {
   @Input() stepForm!: FormGroup;
   @Output() onCompleteStep = new EventEmitter<StepTwoParams>();
+  public isPatient: boolean;
   public roles: IRoleValue[];
 
   constructor() {
+    this.isPatient = false;
     this.roles = [
       { value: Role.SPECIALIST, viewValue: 'Especialista' },
       { value: Role.PATIENT, viewValue: 'Paciente' },
     ];
   }
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   if (changes.isPatient.currentValue) {
-  //     this.stepForm.removeControl('specialties');
-  //     this.stepForm.addControl(
-  //       'medicalAssistance',
-  //       new FormControl('OBRA SOCIAL TEST', [Validators.required])
-  //     );
-  //   }
+  ngOnChanges(changes: SimpleChanges): void {
+    changes.stepForm.currentValue.valueChanges.subscribe(
+      ({ role }: StepTwoParams) => {
+        if (role === Role.PATIENT) {
+          this.isPatient = true;
+          this.stepForm.removeControl('specialties', { emitEvent: false });
+          this.stepForm.addControl(
+            'medicalAssistance',
+            new FormControl(null, [Validators.required]),
+            { emitEvent: false }
+          );
+        }
 
-  //   if (!changes.isPatient.currentValue) {
-  //     this.stepForm.removeControl('medicalAssistance');
-  //     this.stepForm.addControl(
-  //       'specialties',
-  //       new FormControl('ESPECIALIDAD TEST', [Validators.required])
-  //     );
-  //   }
-  // }
+        if (role === Role.SPECIALIST) {
+          this.isPatient = false;
+          this.stepForm.removeControl('medicalAssistance', {
+            emitEvent: false,
+          });
+          this.stepForm.addControl(
+            'specialties',
+            new FormControl(null, [Validators.required]),
+            { emitEvent: false }
+          );
+        }
+      }
+    );
+  }
 
   ngOnInit(): void {}
 

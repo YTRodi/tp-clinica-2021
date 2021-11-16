@@ -70,19 +70,7 @@
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
-    <mat-form-field appearance="outline">
-      <mat-label>Obra social</mat-label>
-      <input
-        formControlName="medicalAssistance"
-        matInput
-        type="text"
-        placeholder="Ingresa tu obra social"
-        required
-      />
-      <mat-error>Invalid email</mat-error>
-    </mat-form-field>
-
+  <div fxLayout="row">
     <mat-form-field appearance="outline">
       <mat-label>FOTOS</mat-label>
       <!-- TODO: buscar librería para mostrar input type="file" -->
@@ -94,6 +82,38 @@
         matInput
         type="text"
         placeholder="Ingresa tu foto"
+        required
+      />
+      <mat-error>Invalid email</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <mat-form-field
+      appearance="outline"
+      *ngIf="stepForm.controls.role.value && !isPatient"
+    >
+      <mat-label>Especialidades</mat-label>
+      <input
+        formControlName="specialties"
+        matInput
+        type="text"
+        placeholder="Ingresa tu obra social"
+        required
+      />
+      <mat-error>Invalid email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      appearance="outline"
+      *ngIf="stepForm.controls.role.value && isPatient"
+    >
+      <mat-label>Obra social</mat-label>
+      <input
+        formControlName="medicalAssistance"
+        matInput
+        type="text"
+        placeholder="Ingresa tu obra social"
         required
       />
       <mat-error>Invalid email</mat-error>
