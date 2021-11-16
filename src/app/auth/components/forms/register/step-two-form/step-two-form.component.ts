@@ -9,7 +9,10 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Role } from 'src/app/shared/enums/role.enum';
-import { IRoleValue } from 'src/app/shared/interfaces/common/common.interface';
+import {
+  IFormError,
+  IRoleValue,
+} from 'src/app/shared/interfaces/common/common.interface';
 
 export interface StepTwoParams {
   role: Role;
@@ -27,7 +30,7 @@ export interface StepTwoParams {
   templateUrl: './step-two-form.component.html',
   styleUrls: ['./step-two-form.component.css'],
 })
-export class StepTwoFormComponent implements OnInit, OnChanges {
+export class StepTwoFormComponent implements OnInit, OnChanges, IFormError {
   @Input() stepForm!: FormGroup;
   @Output() onCompleteStep = new EventEmitter<StepTwoParams>();
   public isPatient: boolean;
@@ -73,5 +76,35 @@ export class StepTwoFormComponent implements OnInit, OnChanges {
 
   onSubmit(): void {
     this.onCompleteStep.emit(this.stepForm.value);
+  }
+
+  getErrorMessage(formControlName: string): string {
+    if (this.stepForm.get(formControlName)?.touched) {
+      if (this.stepForm.get(formControlName)?.errors?.required) {
+        return {
+          role: 'El tipo de usuario es requerido',
+          firstName: 'El nombre es requerido',
+          lastName: 'El apellido es requerido',
+          age: 'La edad es requerida',
+          dni: 'El dni es requerido',
+          photos: 'Las fotos son requeridas',
+          specialties: 'Las especialidades son requeridas',
+          medicalAssistance: 'La obra social es requerida',
+        }[formControlName]!;
+      }
+
+      if (this.stepForm.get(formControlName)?.hasError('minlength')) {
+        return {
+          firstName: 'El nombre tiene que tener como mínimo 2 caracteres',
+          lastName: 'El apellido tiene que tener como mínimo 2 caracteres',
+        }[formControlName]!;
+      }
+
+      if (this.stepForm.get(formControlName)?.hasError('ageValidator')) {
+        return 'La edad debe ser como mínimo de 1 y máximo 120 años';
+      }
+    }
+
+    return '';
   }
 }

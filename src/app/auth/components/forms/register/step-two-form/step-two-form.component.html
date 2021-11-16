@@ -7,10 +7,13 @@
           {{ role.viewValue }}
         </mat-option>
       </mat-select>
+      <mat-error>
+        {{ getErrorMessage("role") }}
+      </mat-error>
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+  <div fxLayout="row">
     <mat-form-field appearance="outline">
       <mat-label>Nombre</mat-label>
       <input
@@ -20,9 +23,13 @@
         placeholder="Ingresa tu nombre"
         required
       />
-      <mat-error>Invalid email</mat-error>
+      <mat-error>
+        {{ getErrorMessage("firstName") }}
+      </mat-error>
     </mat-form-field>
+  </div>
 
+  <div fxLayout="row">
     <mat-form-field appearance="outline">
       <mat-label>Apellido</mat-label>
       <input
@@ -32,25 +39,36 @@
         placeholder="Ingresa tu apellido"
         required
       />
-      <mat-error>Invalid email</mat-error>
+      <mat-error>
+        {{ getErrorMessage("lastName") }}
+      </mat-error>
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+  <div
+    fxLayout="row"
+    fxLayoutGap="10px"
+    fxLayout.xs="column"
+    fxLayoutGap.xs="0px"
+  >
     <mat-form-field appearance="outline">
       <mat-label>Edad</mat-label>
-      <!-- TODO: poner min y max -->
-      <!-- TODO: poner min y max -->
-      <!-- TODO: poner min y max -->
-      <!-- TODO: poner min y max -->
       <input
         formControlName="age"
         matInput
         type="number"
         placeholder="Ingresa tu edad"
+        min="1"
+        max="120"
         required
       />
-      <mat-error>Invalid email</mat-error>
+
+      <!-- <span *ngIf="stepForm.get('age')?.errors?.ageValidator"
+        >Only for age group 20 to 70</span
+      > -->
+      <mat-error>
+        {{ getErrorMessage("age") }}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -66,7 +84,9 @@
         placeholder="Ingresa tu dni"
         required
       />
-      <mat-error>Invalid email</mat-error>
+      <mat-error>
+        {{ getErrorMessage("dni") }}
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -84,7 +104,9 @@
         placeholder="Ingresa tu foto"
         required
       />
-      <mat-error>Invalid email</mat-error>
+      <mat-error>
+        {{ getErrorMessage("photos") }}
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -101,7 +123,9 @@
         placeholder="Ingresa tus especialidades"
         required
       />
-      <mat-error>Invalid email</mat-error>
+      <mat-error>
+        {{ getErrorMessage("specialties") }}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field
@@ -116,7 +140,9 @@
         placeholder="Ingresa tu obra social"
         required
       />
-      <mat-error>Invalid email</mat-error>
+      <mat-error>
+        {{ getErrorMessage("medicalAssistance") }}
+      </mat-error>
     </mat-form-field>
   </div>
 
