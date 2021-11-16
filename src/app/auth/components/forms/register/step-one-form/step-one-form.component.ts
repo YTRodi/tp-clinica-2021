@@ -27,8 +27,12 @@ export class StepOneFormComponent implements OnInit, IFormError {
 
   getErrorMessage(formControlName: string): string {
     if (this.stepForm.get(formControlName)?.touched) {
-      if (this.stepForm.get(formControlName)?.errors?.required)
-        return 'Debes ingresar un valor';
+      if (this.stepForm.get(formControlName)?.errors?.required) {
+        return {
+          email: 'El email es requerido',
+          password: 'La contraseña es requerida',
+        }[formControlName]!;
+      }
 
       if (this.stepForm.get(formControlName)?.hasError('minlength'))
         return 'La contraseña debe contener como mínimo 6 caracteres';
