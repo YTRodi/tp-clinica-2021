@@ -4,8 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IPatient } from 'src/app/entities/patient/patient.interface';
 import { ISpecialist } from 'src/app/entities/specialist/specialist.interface';
 import { Role } from 'src/app/shared/enums/role.enum';
-
-import { StepThreeParams } from '../../components/forms/register/step-three-form/step-three-form.component';
+import { StepOneParams } from '../../components/forms/register/step-one-form/step-one-form.component';
 import { StepTwoParams } from '../../components/forms/register/step-two-form/step-two-form.component';
 
 @Component({
@@ -16,9 +15,8 @@ import { StepTwoParams } from '../../components/forms/register/step-two-form/ste
 export class RegisterComponent implements OnInit {
   public user: IPatient | ISpecialist;
 
-  public stepOneForm: FormControl;
+  public stepOneForm: FormGroup;
   public stepTwoForm: FormGroup;
-  public stepThreeForm: FormGroup;
 
   constructor() {
     this.user = {
@@ -35,67 +33,85 @@ export class RegisterComponent implements OnInit {
       updatedAt: new Date(),
       deletedAt: null,
       medicalAssistance: '',
+      specialties: [],
     };
 
-    this.stepOneForm = new FormControl(null, [Validators.required]);
-
-    this.stepTwoForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required]),
+    this.stepOneForm = new FormGroup({
+      email: new FormControl('test@gmail.com', [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: new FormControl('Password1', [Validators.required]),
     });
 
-    this.stepThreeForm = new FormGroup({
-      firstName: new FormControl(null, [Validators.required]),
-      lastName: new FormControl(null, [Validators.required]),
-      age: new FormControl(null, [Validators.required]),
-      dni: new FormControl(null, [Validators.required]),
-      medicalAssistance: new FormControl(null, [Validators.required]),
-      photos: new FormControl(null, [Validators.required]), // TODO: Array???
+    this.stepTwoForm = new FormGroup({
+      role: new FormControl(null, [Validators.required]),
+      firstName: new FormControl('nombre', [Validators.required]),
+      lastName: new FormControl('apellido', [Validators.required]),
+      age: new FormControl(25, [Validators.required]),
+      dni: new FormControl('41448581', [Validators.required]),
+      photos: new FormControl('photo 1', [Validators.required]), // TODO: Array???
+      medicalAssistance: new FormControl('photo 1', [Validators.required]),
     });
   }
 
   ngOnInit(): void {}
 
-  onCompleteStepOne(role: Role): void {
-    //! [IMPORTANTE]:
-    // TODO: dependiendo del role elegido, que el step 3 se muestre condicionalmente. (ya que si es paciente, tiene medicalAssistance y si es especialista tiene specialties)
-    // TODO: dependiendo del role elegido, que el step 3 se muestre condicionalmente. (ya que si es paciente, tiene medicalAssistance y si es especialista tiene specialties)
-    // TODO: dependiendo del role elegido, que el step 3 se muestre condicionalmente. (ya que si es paciente, tiene medicalAssistance y si es especialista tiene specialties)
-    this.user.role = role;
-  }
-
-  onCompleteStepTwo({ email, password }: StepTwoParams): void {
+  onCompleteStepOne({ email, password }: StepOneParams): void {
     this.user.email = email;
     this.user.password = password;
   }
 
-  onCompleteStepThree({
+  onCompleteStepTwo({
+    role,
     firstName,
     lastName,
     age,
     dni,
     medicalAssistance,
+    specialties,
     photos,
-  }: StepThreeParams): void {
-    this.user.firstName = firstName;
-    this.user.lastName = lastName;
-    this.user.age = age;
-    this.user.dni = dni;
-
-    // this.user.medicalAssistance = medicalAssistance;
-    // this.user.specialties = specialties;
-
-    this.user.photos = [
-      {
-        url: 'FAKE URL',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null,
-      },
-    ];
-
-    console.log(this.user);
+  }: StepTwoParams): void {
+    console.log({
+      role,
+      firstName,
+      lastName,
+      age,
+      dni,
+      medicalAssistance,
+      specialties,
+      photos,
+    });
   }
+
+  // onCompleteStepThree({
+  // firstName,
+  // lastName,
+  // age,
+  // dni,
+  // medicalAssistance,
+  // specialties,
+  // photos,
+  // }: StepThreeParams): void {
+  //   this.user.firstName = firstName;
+  //   this.user.lastName = lastName;
+  //   this.user.age = age;
+  //   this.user.dni = dni;
+
+  //   // this.user.medicalAssistance = medicalAssistance;
+  //   // this.user.specialties = specialties;
+
+  //   this.user.photos = [
+  //     {
+  //       url: 'FAKE URL',
+  //       createdAt: new Date(),
+  //       updatedAt: new Date(),
+  //       deletedAt: null,
+  //     },
+  //   ];
+
+  //   console.log(this.user);
+  // }
 }
 
-// TODO: me quedé acá arreglando el tema de "medicalAssitance y specialties"
+// TODO: me quedé acá COMO HACER que si cambio el

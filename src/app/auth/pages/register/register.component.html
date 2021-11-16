@@ -7,12 +7,22 @@
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
   <div>
     <h1>Registro</h1>
+    <div fxLayout="row">
+      <pre>
+
+        {{ this.stepTwoForm.value | json }}
+      </pre>
+      <pre>
+  
+        {{ this.user | json }}
+      </pre>
+    </div>
   </div>
 
   <!-- style="border: 1px solid red; height: 100%; width: 50%" -->
   <mat-stepper style="border: 1px solid red" linear #stepper>
     <!-- Step 1 -->
-    <mat-step label="Tipo de usuario" [stepControl]="stepOneForm">
+    <mat-step label="Email y contraseña" [stepControl]="stepOneForm">
       <app-step-one-form
         [stepForm]="stepOneForm"
         (onCompleteStep)="onCompleteStepOne($event)"
@@ -21,30 +31,11 @@
     </mat-step>
 
     <!-- Step 2 -->
-    <mat-step label="Email y contraseña" [stepControl]="stepTwoForm">
+    <mat-step label="Datos personales" [stepControl]="stepTwoForm">
       <app-step-two-form
         [stepForm]="stepTwoForm"
         (onCompleteStep)="onCompleteStepTwo($event)"
       ></app-step-two-form>
     </mat-step>
-
-    <!-- Step 3 -->
-    <mat-step label="Datos personales" [stepControl]="stepThreeForm">
-      <app-step-three-form
-        [stepForm]="stepThreeForm"
-        (onCompleteStep)="onCompleteStepThree($event)"
-      ></app-step-three-form>
-    </mat-step>
-
-    <!-- Step 4 -->
-    <!-- <mat-step label="Perfil completado">
-      <p>¡Tu perfil se ha creado con éxito!</p>
-
-      <div fxLayoutAlign="end center">
-        <button mat-raised-button matStepperNext color="accent">
-          Ir al backoffice
-        </button>
-      </div>
-    </mat-step> -->
   </mat-stepper>
 </div>

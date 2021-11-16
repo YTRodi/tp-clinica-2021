@@ -1,7 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { IRoleValue } from 'src/app/shared/interfaces/common/common.interface';
-import { Role } from 'src/app/shared/enums/role.enum';
+import { FormGroup } from '@angular/forms';
+
+export interface StepOneParams {
+  email: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-step-one-form',
@@ -9,16 +12,11 @@ import { Role } from 'src/app/shared/enums/role.enum';
   styleUrls: ['./step-one-form.component.css'],
 })
 export class StepOneFormComponent implements OnInit {
-  @Input() stepForm!: FormControl;
-  @Output() onCompleteStep = new EventEmitter<Role>();
-  public roles: IRoleValue[];
+  hide = true;
+  @Input() stepForm!: FormGroup;
+  @Output() onCompleteStep = new EventEmitter<StepOneParams>();
 
-  constructor() {
-    this.roles = [
-      { value: Role.SPECIALIST, viewValue: 'Especialista' },
-      { value: Role.PATIENT, viewValue: 'Paciente' },
-    ];
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 

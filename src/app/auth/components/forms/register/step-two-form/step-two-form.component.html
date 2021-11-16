@@ -1,34 +1,102 @@
 <form [formGroup]="stepForm" (ngSubmit)="onSubmit()">
-  <div fxLayout="column">
+  <div fxLayout="row">
     <mat-form-field appearance="outline">
-      <mat-label>Email</mat-label>
+      <mat-label>Seleccione el tipo de usuario</mat-label>
+      <mat-select formControlName="role" required>
+        <mat-option *ngFor="let role of roles" [value]="role.value">
+          {{ role.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
       <input
-        formControlName="email"
+        formControlName="firstName"
         matInput
-        type="email"
-        placeholder="Ingresa tu email"
+        type="text"
+        placeholder="Ingresa tu nombre"
         required
       />
       <mat-error>Invalid email</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Contraseña</mat-label>
+      <mat-label>Apellido</mat-label>
       <input
-        formControlName="password"
+        formControlName="lastName"
         matInput
-        [type]="hide ? 'password' : 'text'"
-        placeholder="Ingresa tu contraseña"
+        type="text"
+        placeholder="Ingresa tu apellido"
         required
-        [autocomplete]="false"
       />
-      <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
-        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-      </button>
-      <mat-hint>
-        La contraseña debe contener 1 mayúscula, etc etc etc ETC
-      </mat-hint>
-      <mat-error *ngIf="hide === false">Invalid email</mat-error>
+      <mat-error>Invalid email</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Edad</mat-label>
+      <!-- TODO: poner min y max -->
+      <!-- TODO: poner min y max -->
+      <!-- TODO: poner min y max -->
+      <!-- TODO: poner min y max -->
+      <input
+        formControlName="age"
+        matInput
+        type="number"
+        placeholder="Ingresa tu edad"
+        required
+      />
+      <mat-error>Invalid email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>DNI</mat-label>
+      <!-- TODO: BUSCAR como hacer un masked input para el dni -->
+      <!-- TODO: BUSCAR como hacer un masked input para el dni -->
+      <!-- TODO: BUSCAR como hacer un masked input para el dni -->
+      <!-- TODO: BUSCAR como hacer un masked input para el dni -->
+      <input
+        formControlName="dni"
+        matInput
+        type="text"
+        placeholder="Ingresa tu dni"
+        required
+      />
+      <mat-error>Invalid email</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="10px" fxLayout.xs="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Obra social</mat-label>
+      <input
+        formControlName="medicalAssistance"
+        matInput
+        type="text"
+        placeholder="Ingresa tu obra social"
+        required
+      />
+      <mat-error>Invalid email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>FOTOS</mat-label>
+      <!-- TODO: buscar librería para mostrar input type="file" -->
+      <!-- TODO: buscar librería para mostrar input type="file" -->
+      <!-- TODO: buscar librería para mostrar input type="file" -->
+      <!-- TODO: buscar librería para mostrar input type="file" -->
+      <input
+        formControlName="photos"
+        matInput
+        type="text"
+        placeholder="Ingresa tu foto"
+        required
+      />
+      <mat-error>Invalid email</mat-error>
     </mat-form-field>
   </div>
 
