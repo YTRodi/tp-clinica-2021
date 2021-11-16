@@ -20,11 +20,11 @@ export class RegisterComponent implements OnInit {
     this.user = new User();
 
     this.stepOneForm = new FormGroup({
-      email: new FormControl('test@gmail.com', [
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [
         Validators.required,
-        Validators.email,
+        Validators.minLength(6),
       ]),
-      password: new FormControl('Password1', [Validators.required]),
     });
 
     this.stepTwoForm = new FormGroup({

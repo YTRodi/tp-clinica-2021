@@ -15,3 +15,7 @@ export interface IRoleValue {
   value: Role;
   viewValue: string;
 }
+
+export interface IFormError {
+  getErrorMessage(formControlName: string): string;
+}

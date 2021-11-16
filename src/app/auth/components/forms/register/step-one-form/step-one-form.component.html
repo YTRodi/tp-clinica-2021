@@ -8,8 +8,11 @@
         type="email"
         placeholder="Ingresa tu email"
         required
+        autocomplete="off"
       />
-      <mat-error>Invalid email</mat-error>
+      <mat-error>
+        {{ getErrorMessage("email") }}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -26,9 +29,11 @@
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
       <mat-hint>
-        La contraseña debe contener 1 mayúscula, etc etc etc ETC
+        La contraseña debe contener como mínimo 6 caracteres
       </mat-hint>
-      <mat-error *ngIf="hide === false">Invalid email</mat-error>
+      <mat-error>
+        {{ getErrorMessage("password") }}
+      </mat-error>
     </mat-form-field>
   </div>
 
