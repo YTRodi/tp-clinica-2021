@@ -21,11 +21,8 @@ export class RegisterComponent implements OnInit {
     this.user = new User();
 
     this.stepOneForm = new FormGroup({
-      email: new FormControl('test@gmail.com', [
-        Validators.required,
-        Validators.email,
-      ]),
-      password: new FormControl('Password1', [
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [
         Validators.required,
         Validators.minLength(6),
       ]),
@@ -33,21 +30,21 @@ export class RegisterComponent implements OnInit {
 
     this.stepTwoForm = new FormGroup({
       role: new FormControl(null, [Validators.required]),
-      firstName: new FormControl('n', [
+      firstName: new FormControl(null, [
         Validators.required,
         Validators.minLength(2),
       ]),
-      lastName: new FormControl('apellido', [
+      lastName: new FormControl(null, [
         Validators.required,
         Validators.minLength(2),
       ]),
-      age: new FormControl(0, [Validators.required, ageValidator]),
-      dni: new FormControl('41448581', [
+      age: new FormControl(null, [Validators.required, ageValidator]),
+      dni: new FormControl(null, [
         Validators.required,
         Validators.min(11111111),
         Validators.max(99999999),
       ]),
-      photos: new FormControl('photo 1', [Validators.required]), // TODO: Array???
+      photos: new FormControl(null, [Validators.required]), // TODO: Array???
     });
   }
 

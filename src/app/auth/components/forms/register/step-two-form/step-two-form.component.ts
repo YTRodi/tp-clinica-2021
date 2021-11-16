@@ -79,30 +79,37 @@ export class StepTwoFormComponent implements OnInit, OnChanges, IFormError {
   }
 
   getErrorMessage(formControlName: string): string {
-    if (this.stepForm.get(formControlName)?.touched) {
-      if (this.stepForm.get(formControlName)?.errors?.required) {
-        return {
-          role: 'El tipo de usuario es requerido',
-          firstName: 'El nombre es requerido',
-          lastName: 'El apellido es requerido',
-          age: 'La edad es requerida',
-          dni: 'El dni es requerido',
-          photos: 'Las fotos son requeridas',
-          specialties: 'Las especialidades son requeridas',
-          medicalAssistance: 'La obra social es requerida',
-        }[formControlName]!;
-      }
+    if (this.stepForm.get(formControlName)?.errors?.required) {
+      return {
+        role: 'El tipo de usuario es requerido',
+        firstName: 'El nombre es requerido',
+        lastName: 'El apellido es requerido',
+        age: 'La edad es requerida',
+        dni: 'El dni es requerido',
+        photos: 'Las fotos son requeridas',
+        specialties: 'Las especialidades son requeridas',
+        medicalAssistance: 'La obra social es requerida',
+      }[formControlName]!;
+    }
 
-      if (this.stepForm.get(formControlName)?.hasError('minlength')) {
-        return {
-          firstName: 'El nombre tiene que tener como mínimo 2 caracteres',
-          lastName: 'El apellido tiene que tener como mínimo 2 caracteres',
-        }[formControlName]!;
-      }
+    if (this.stepForm.get(formControlName)?.hasError('minlength')) {
+      return {
+        firstName: 'El nombre tiene que tener como mínimo 2 caracteres',
+        lastName: 'El apellido tiene que tener como mínimo 2 caracteres',
+      }[formControlName]!;
+    }
 
-      if (this.stepForm.get(formControlName)?.hasError('ageValidator')) {
-        return 'La edad debe ser como mínimo de 1 y máximo 120 años';
-      }
+    if (this.stepForm.get(formControlName)?.hasError('ageValidator')) {
+      return 'La edad debe ser como mínimo de 1 y máximo 120 años';
+    }
+
+    if (
+      this.stepForm.get(formControlName)?.hasError('min') ||
+      this.stepForm.get(formControlName)?.hasError('max')
+    ) {
+      return {
+        dni: 'El dni tiene que estar entre 11.111.111 y 99.999.999',
+      }[formControlName]!;
     }
 
     return '';

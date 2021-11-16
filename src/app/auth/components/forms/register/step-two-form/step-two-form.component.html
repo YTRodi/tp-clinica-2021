@@ -62,10 +62,6 @@
         max="120"
         required
       />
-
-      <!-- <span *ngIf="stepForm.get('age')?.errors?.ageValidator"
-        >Only for age group 20 to 70</span
-      > -->
       <mat-error>
         {{ getErrorMessage("age") }}
       </mat-error>
@@ -73,10 +69,6 @@
 
     <mat-form-field appearance="outline">
       <mat-label>DNI</mat-label>
-      <!-- TODO: BUSCAR como hacer un masked input para el dni -->
-      <!-- TODO: BUSCAR como hacer un masked input para el dni -->
-      <!-- TODO: BUSCAR como hacer un masked input para el dni -->
-      <!-- TODO: BUSCAR como hacer un masked input para el dni -->
       <input
         formControlName="dni"
         matInput
