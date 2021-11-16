@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/entities/user/user';
 
-import { User } from 'src/app/entities/user/user.interface';
 import { StepOneParams } from '../../components/forms/register/step-one-form/step-one-form.component';
 import { StepTwoParams } from '../../components/forms/register/step-two-form/step-two-form.component';
 
