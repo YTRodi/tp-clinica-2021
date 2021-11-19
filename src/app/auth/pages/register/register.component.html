@@ -1,16 +1,13 @@
-<!-- TODO: agregar un shadow al stepper -->
-<!-- TODO: agregar un shadow al stepper -->
-<!-- TODO: agregar un shadow al stepper -->
-<!-- TODO: agregar un shadow al stepper -->
-<!-- TODO: agregar un shadow al stepper -->
-
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
-  <div>
-    <h1>Registro</h1>
+  <div class="title-wrapper">
+    <h1>Registro de usuarios</h1>
   </div>
 
-  <!-- style="border: 1px solid red; height: 100%; width: 50%" -->
-  <mat-stepper style="border: 1px solid red" linear #stepper>
+  <mat-stepper
+    class="mat-elevation-z2"
+    linear
+    [orientation]="(stepperOrientation | async)!"
+  >
     <!-- Step 1 -->
     <mat-step label="Email y contraseña" [stepControl]="stepOneForm">
       <app-step-one-form

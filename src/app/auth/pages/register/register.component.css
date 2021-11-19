@@ -2,10 +2,6 @@
   height: 100%;
 }
 
-form {
-  margin-top: 1.5rem;
-}
-
-mat-form-field {
-  width: 100%;
+.title-wrapper {
+  margin-bottom: 1rem;
 }

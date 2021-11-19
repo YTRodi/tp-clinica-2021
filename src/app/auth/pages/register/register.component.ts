@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { StepperOrientation } from '@angular/material/stepper';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { User } from 'src/app/entities/user/user';
 import { ageValidator } from 'src/app/shared/validators/ageValidator';
 
@@ -12,12 +17,18 @@ import { StepTwoParams } from '../../components/forms/register/step-two-form/ste
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  public stepperOrientation: Observable<StepperOrientation>;
+
   public user: User;
 
   public stepOneForm: FormGroup;
   public stepTwoForm: FormGroup;
 
-  constructor() {
+  constructor(public breakpointObserver: BreakpointObserver) {
+    this.stepperOrientation = this.breakpointObserver
+      .observe('(min-width: 800px)')
+      .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
+
     this.user = new User();
 
     this.stepOneForm = new FormGroup({

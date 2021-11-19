@@ -13,3 +13,7 @@ body {
 .spacer {
   flex: 1 1 auto;
 }
+
+.step-buttons {
+  margin-top: 1rem;
+}
