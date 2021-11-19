@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { StepOneFormComponent } from './components/forms/register/step-one-form/step-one-form.component';
 import { StepTwoFormComponent } from './components/forms/register/step-two-form/step-two-form.component';
+import { LoginFormComponent } from './components/forms/login/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { StepTwoFormComponent } from './components/forms/register/step-two-form/
     RegisterComponent,
     StepOneFormComponent,
     StepTwoFormComponent,
+    LoginFormComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,50 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div fxLayout="column">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        type="email"
+        placeholder="Ingresa tu email"
+        required
+        autocomplete="off"
+      />
+      <mat-error>
+        {{ getErrorMessage("email") }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        placeholder="Ingresa tu contraseña"
+        required
+        [autocomplete]="false"
+      />
+      <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-hint>
+        La contraseña debe contener como mínimo 6 caracteres
+      </mat-hint>
+      <mat-error>
+        {{ getErrorMessage("password") }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="submit-wrapper" fxLayoutAlign="end center" fxLayoutGap="10px">
+    <button
+      mat-raised-button
+      color="accent"
+      [disabled]="!loginForm.valid"
+      style="width: 100%"
+    >
+      Siguiente
+    </button>
+  </div>
+</form>
